@@ -1,0 +1,49 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Goldman:wght@400;700&family=Syne:wght@400..800&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bruno+Ace+SC&family=Goldman:wght@400;700&family=Lexend:wght@100..900&family=Syne:wght@400..800&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=BBH+Bogle&family=Bebas+Neue&family=Bruno+Ace+SC&family=Goldman:wght@400;700&family=Lexend:wght@100..900&family=Outfit:wght@100..900&family=Syne:wght@400..800&display=swap');
+@import "tailwindcss";
+
+body {
+  background: url('./assets/stars-bg.avif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  background-position: center;
+  font-family: "Syne", sans-serif;
+  color: aliceblue;
+  position: relative;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#root {
+  padding-inline: 2.4rem;
+  margin-top: 39px;
+  border-radius: 16px;
+  background: rgb(6 6 6 / 70%);
+  -webkit-backdrop-filter: blur(12px);
+  min-height: 100vh;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  #scroll-container {
+    margin-left: 0;
+  }
+  #root {
+    padding-inline: 1.2rem;
+  }
+}
+
