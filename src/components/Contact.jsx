@@ -1,13 +1,50 @@
 import { motion } from "framer-motion";
 import { GrSend } from "react-icons/gr";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    const id = toast.loading("Sending your message...", {
+      position: "top-center",
+    });
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_PUBLIC_KEY,
+      )
+      .then(
+        (result) => {
+          toast.update(id, {
+            render: "Message sent successfully!",
+            type: "success",
+            isLoading: false,
+            autoClose: 4000,
+          });
+          form.current.reset();
+        },
+        (error) => {
+          toast.update(id, {
+            render: "Failed to send message. Please try again.",
+            type: "error",
+            isLoading: false,
+            autoClose: 4000,
+          });
+        },
+      );
+  };
+
   return (
     <section id="contact" className="py-12 lg:py-24">
-      {/* <div className="max-w-6xl mx-auto"> */}
       <div className="max-w-6xl">
-
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,72 +81,85 @@ const Contact = () => {
 
         {/* Form */}
         <div className="bg-white/5 backdrop-blur-xl border border-[#395064] rounded-2xl p-4 lg:p-8 mb-16">
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
+          <form
+            ref={form}
+            onSubmit={sendEmail}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
             <input
               type="text"
               placeholder="Your Name"
-              className="bg-transparent border border-white/20 [border-bottom-color:#98cbfd] rounded-lg px-4 py-3 text-white outline-none focus:border-[#98cbfd]"
-            />
-
-            <input
-              type="text"
-              placeholder="Company Name"
+              name="user_name"
+              required
               className="bg-transparent border border-white/20 [border-bottom-color:#98cbfd] rounded-lg px-4 py-3 text-white outline-none focus:border-[#98cbfd]"
             />
 
             <input
               type="email"
               placeholder="Email Address"
+              name="user_email"
+              required
+              className="bg-transparent border border-white/20 [border-bottom-color:#98cbfd] rounded-lg px-4 py-3 text-white outline-none focus:border-[#98cbfd]"
+            />
+
+            <input
+              type="text"
+              placeholder="Company Name"
+              name="company_name"
               className="bg-transparent border border-white/20 [border-bottom-color:#98cbfd] rounded-lg px-4 py-3 text-white outline-none focus:border-[#98cbfd]"
             />
 
             <input
               type="tel"
               placeholder="Phone Number"
+              name="phone"
+              required
               className="bg-transparent border border-white/20 [border-bottom-color:#98cbfd] rounded-lg px-4 py-3 text-white outline-none focus:border-[#98cbfd]"
             />
 
             <textarea
               rows="5"
               placeholder="Your Message"
+              name="message"
+              required
               className="md:col-span-2 bg-transparent border border-white/20 [border-bottom-color:#98cbfd] rounded-lg px-4 py-3 text-white outline-none focus:border-[#98cbfd]"
             />
 
             <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               type="submit"
               className="cursor-pointer text-sm lg:text-lg w-[fit-content] md:col-span-2 mt-4 inline-flex items-center gap-[10px] justify-center px-8 py-3 rounded-xl bg-[#033160] border border-[#98cbfd] text-white hover:bg-[#04407d] transition"
             >
-              Send Message <GrSend size={20}/>
+              Send Message <GrSend size={20} />
             </motion.button>
           </form>
         </div>
 
         {/* Contact Info */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
-
-          {/* Location */}
           <div>
             <h4 className="text-lg font-medium mb-2">Location</h4>
             <p className="text-white/70">Karachi, Pakistan</p>
           </div>
 
-          {/* Phone */}
           <div>
             <h4 className="text-lg font-medium mb-2">Phone</h4>
             <p className="text-white/70">+92-310-2827079</p>
           </div>
 
-          {/* Email */}
           <div>
             <h4 className="text-lg font-medium mb-2">Email</h4>
-            <p className="text-white/70">umarshaikh2066@gmail.com</p>
+            <p className="text-white/70">umarshaikh66021@gmail.com</p>
           </div>
-
         </div>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={4000}
+        style={{ zIndex: 99999 }}
+      />
     </section>
   );
 };

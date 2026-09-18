@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./SocialIcons";
 import avatar from "../assets/umar.jfif";
-// import avatar from "../assets/avatar.jpg";
 import { ImCross } from "react-icons/im";
 import { FaUser } from "react-icons/fa";
 
@@ -13,7 +12,6 @@ const FixedCard = () => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      // Focus the close button when panel opens
       setTimeout(() => {
         const closeBtn = document.getElementById("close-panel-btn");
         closeBtn?.focus();
@@ -72,15 +70,14 @@ const FixedCard = () => {
     },
   };
 
-
-function Slide({ img, description }) {
-  return (
-    <motion.div exit={{ opacity: 0 }}>
-      <img src={img.src} />
-      <motion.p exit={{ y: 10 }}>{description}</motion.p>
-    </motion.div>
-  )
-}
+  function Slide({ img, description }) {
+    return (
+      <motion.div exit={{ opacity: 0 }}>
+        <img src={img.src} />
+        <motion.p exit={{ y: 10 }}>{description}</motion.p>
+      </motion.div>
+    );
+  }
 
   return (
     <>

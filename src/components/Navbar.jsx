@@ -10,20 +10,18 @@ import { IoCloseOutline } from "react-icons/io5";
 import { TiMessages } from "react-icons/ti";
 import { scrollToSection } from "../scrollToSection.js";
 
-
 const navItems = [
-  { icon: <LiaHomeSolid size={20}/>, label: "Home", id: "hero" },
-  { icon: <IoPersonOutline size={20}/>, label: "About", id: "about" },
-  { icon: <IoSettingsOutline size={20}/>, label: "Services", id: "services" },
-  { icon: <MdOutlineAssignment size={20}/>, label: "Resume", id: "resume" },
-  { icon: <PiSuitcaseSimple size={20}/>, label: "Projects", id: "projects" },
+  { icon: <LiaHomeSolid size={20} />, label: "Home", id: "hero" },
+  { icon: <IoPersonOutline size={20} />, label: "About", id: "about" },
+  { icon: <IoSettingsOutline size={20} />, label: "Services", id: "services" },
+  { icon: <MdOutlineAssignment size={20} />, label: "Resume", id: "resume" },
+  { icon: <PiSuitcaseSimple size={20} />, label: "Projects", id: "projects" },
 ];
 
 const Navbar = () => {
   const [active, setActive] = useState("hero");
   const [open, setOpen] = useState(false);
 
-  // scroll spy
   useEffect(() => {
     const container = document.getElementById("scroll-container");
     if (!container) return;
@@ -78,19 +76,17 @@ const Navbar = () => {
             </button>
           ))}
 
-          {/* Contact CTA */}
           <motion.button
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection("contact")}
             className="flex items-center gap-[8px] bg-[#033160] ml-auto border-[1px] border-[solid] border-[#98cbfd] px-[24px] py-[10px] rounded-[8px] text-[aliceblue] cursor-pointer transition"
           >
-            Let's Talk 
-            <TiMessages size={20}/>
+            Let's Talk
+            <TiMessages size={20} />
           </motion.button>
         </div>
 
-        {/* ================= Mobile Hamburger ================= */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden text-white ml-auto"
@@ -106,7 +102,7 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               className="
-                bg-[#000] absolute top-full left-0 mt-4 w-full
+                bg-[#000] absolute top-full left-0 w-full
                 rounded-2xl backdrop-blur-xl
                 border border-white/20 p-4
                 flex flex-col gap-4 md:hidden
@@ -131,12 +127,7 @@ const Navbar = () => {
                   scrollToSection("contact");
                   setOpen(false);
                 }}
-              //   className=" bg-[#002c58] 
-              //     mt-2 px-4 py-2 rounded-xl
-              //     bg-white/20 text-white
-              //     hover:bg-white/30 transition
-              //   "
-          className="inline-block bg-[#033160] border-[1px] border-[solid] border-[#98cbfd] cursor-pointer text-[aliceblue] px-[22px] py-[10px] rounded-[8px] ml-[6px]"
+                className="inline-block bg-[#033160] border-[1px] border-[solid] border-[#98cbfd] cursor-pointer text-[aliceblue] px-[22px] py-[10px] rounded-[8px] ml-[6px]"
               >
                 Contact
               </button>

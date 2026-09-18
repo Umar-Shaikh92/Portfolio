@@ -2,6 +2,26 @@ import { motion } from "framer-motion";
 import { scrollToSection } from "../scrollToSection.js";
 
 const About = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.4,
+      },
+    },
+  };
+
+  const childVariants = {
+    hidden: { y: 30, opacity: 0 },
+    show: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
     <section id="about" className="py-12 lg:py-24">
       <motion.div
@@ -30,64 +50,72 @@ const About = () => {
       </motion.div>
 
       <motion.h2
-      initial={{ y: 40, opacity: 0 }}
-  whileInView={{ y: 0, opacity: 1 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
-  viewport={{ once: true, amount: 0.6 }}
-        // initial={{ opacity: 0, y: 30 }}
-        // animate={{ opacity: 1, y: 0 }}
-        // transition={{ duration: 0.8, ease: "easeOut" }}
+        initial={{ y: 40, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.6 }}
         className="text-[2rem] leading-[38px] sm:leading-[54px] sm:text-[3rem] text-[#98cbfd] font-bold pb-[20px]"
       >
-        {/* text-[2.5rem] leading-[48px] */}
         Transforming complex problems into innovative digital solutions
       </motion.h2>
 
-      <div className="text-[18px]">
-        <p className="pb-[20px]">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="text-[18px]"
+      >
+        <motion.p variants={childVariants} className="pb-[20px]">
           I'm a Mern-stack software engineer and web developer specializing in
           front-end and back-end development. My tech stack includes MERN as
           well as experience with JavaScript, Tailwind, Scss, React, Node.js,
           Express.js and Firebase. I create high-performance web applications
           that drive business success.
-        </p>
+        </motion.p>
 
-        <p className="pb-[20px]">
+        <motion.p variants={childVariants} className="pb-[20px]">
           From creating modern, dynamic web experiences to designing efficient
           server architectures, I'm committed to delivering robust,
           user-centered solutions. Knowledge of MongoDB, Express.js, React.js,
           and Node.js (MERN) makes it easy to integrate front-end and back-end
           components for any project. I focus on developing software that not
           only meets business goals, but exceeds them.
-        </p>
+        </motion.p>
 
-        <p className="pb-[20px]">
+        <motion.p variants={childVariants} className="pb-[20px]">
           I love problem solving, innovation, and clean coding. My mission is to
           create software that makes life easier, business more efficient, and
           users happier.
-        </p>
+        </motion.p>
 
-        <p className="pb-[20px]">
+        <motion.p variants={childVariants} className="pb-[20px]">
           I began my journey at SMIT (Saylani Mass IT Training Program), where I
           built a strong foundation in web development, evolving from a beginner
           with no knowledge of HTML into a MERN stack developer. Today, my
           front-end and back-end expertise allow me to develop scalable and
           complex web applications.
-        </p>
+        </motion.p>
 
-        <p className="pb-[20px]">
+        <motion.p variants={childVariants} className="pb-[20px]">
           Currently, I am a Mern-stack developer, developing web applications,
           e-commerce platforms, and enterprise solutions for companies in
           various sectors. I constantly research new technologies, track
           industry trends, and always provide the best solutions.
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
-      <div className="text-[18px] mb-[28px]">
-        <p className="pb-[20px]">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.4 }}
+        className="text-[18px] mb-[28px]"
+      >
+        <motion.p variants={childVariants} className="pb-[20px]">
           If you’re interested in collaborating or have an exciting project in
           mind,
-        </p>
+        </motion.p>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -96,7 +124,7 @@ const About = () => {
         >
           Let's Connect
         </motion.button>
-      </div>
+      </motion.div>
     </section>
   );
 };

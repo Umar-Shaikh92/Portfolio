@@ -14,6 +14,7 @@ import scss from "../assets/scss.svg";
 import js from "../assets/js.svg";
 import firebase from "../assets/firebase.svg";
 import react from "../assets/react.svg";
+import nextjs from "../assets/nextjs.svg";
 import node from "../assets/node.svg";
 import mongo from "../assets/mongo.svg";
 import git from "../assets/git.svg";
@@ -71,6 +72,7 @@ const skills = [
   { name: "Python", icon: python },
   { name: "Firebase", icon: firebase },
   { name: "React", icon: react },
+  { name: "Next JS", icon: nextjs },
   { name: "MUI", icon: mui },
   { name: "Node JS", icon: node },
   { name: "Express JS", icon: express },
@@ -166,17 +168,16 @@ const Services = () => {
         </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-16 mx-0 sm:mx-4">
-          {/* <div className="grid md:grid-cols-5 gap-6 mb-16 mx-4"> */}
-          {/* <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5 gap-6 mx-4"> */}
           {skills.map((skill, i) => (
             <motion.div
+              key={i}
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.6 }}
-              key={i}
-              whileHover={{ scale: 1.1 }}
-              className="h-full flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 hover:border-[#98cbfd] transition"
+              viewport={{ once: true, amount: 0.2 }}
+              layout
+              style={{ willChange: "transform" }}
+              className="h-full flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 hover:border-[#98cbfd] transition-transform duration-300 ease-out hover:scale-110 will-change-transform"
             >
               <img
                 src={skill.icon}

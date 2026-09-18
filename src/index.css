@@ -9,9 +9,10 @@ body {
   background-size: cover;
   min-height: 100vh;
   background-position: center;
+  background-attachment: fixed;
   font-family: "Syne", sans-serif;
   color: aliceblue;
-  position: relative;
+  position: fixed;
 }
 
 body::-webkit-scrollbar {
@@ -25,6 +26,22 @@ body::-webkit-scrollbar {
   background: rgb(6 6 6 / 70%);
   -webkit-backdrop-filter: blur(12px);
   min-height: 100vh;
+}
+
+button#chatbase-bubble-button {
+  animation: float-and-bounce 3s infinite ease-in-out;
+}
+
+@keyframes float-and-bounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.03); /* Floats up and stretches slightly */
+  }
+  75% {
+    transform: translateY(-7px) scale(0.98);  /* Subtle settle */
+  }
 }
 
 @layer utilities {
